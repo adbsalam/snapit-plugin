@@ -3,18 +3,30 @@ plugins {
     alias(libs.plugins.gradle.publish)
 }
 
+/**
+ * Project info
+ */
 group = "uk.adbsalam.snapit"
 version = "1.0.2"
 
+/**
+ * Dependencies for project
+ */
 dependencies {
     testImplementation(kotlin("test"))
 }
 
+/**
+ * Java compatibility version set to 17
+ */
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
 
+/**
+ * Gradle plugin properties to be applied to plugin
+ */
 @Suppress("UnstableApiUsage")
 gradlePlugin {
     website.set("https://github.com/MuhammadAbdulSalam/snapit-plugin")
@@ -30,6 +42,9 @@ gradlePlugin {
     }
 }
 
+/**
+ * config to publish plugin to local repo
+ */
 publishing {
     repositories {
         maven {
