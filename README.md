@@ -13,7 +13,13 @@ Apply plugin to your module
 
 In your ```build.gradle.kts``` apply plugin
 
-Use Legacy
+```kotlin
+plugins {
+   id("uk.adbsalam.snapit") version "<LATEST-VERSION>"
+}
+```
+
+OR Use Legacy
 
 ```
 buildscript {
@@ -30,11 +36,6 @@ buildscript {
 apply(plugin = "uk.adbsalam.snapit")
 ```
 
-```kotlin
-plugins {
-   id("uk.adbsalam.snapit") version "<LATEST-VERSION>"
-}
-```
 
 In your ```build.gradle.kts``` set snap test package location to generate tests at.
 ```kotlin
