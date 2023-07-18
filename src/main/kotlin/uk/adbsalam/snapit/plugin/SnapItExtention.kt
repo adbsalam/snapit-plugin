@@ -51,7 +51,7 @@ class SnapPathTask {
     var flavour = ""
 
     fun Project.onInit() {
-        the<SnapPath>().testDir.set(testDir.replace(srcTestPath, ""))
+        the<SnapPath>().testDir.set(testDir)
         the<SnapFlavour>().flavour.set(flavour)
     }
 }

@@ -33,6 +33,7 @@ internal fun Project.snapItGenerateTask() {
             }
 
             val flavour = getFlavour(flavourExt.flavour.get())
+
             dependsOn(getAssembleTask(flavour))
 
             from("build/generated/ksp/${flavour}/kotlin/uk/adbsalam/snapit/")
