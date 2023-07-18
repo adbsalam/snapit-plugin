@@ -16,6 +16,8 @@ class SnapIt : Plugin<Project> {
 
         project.extensions.create<SnapPath>(PATH_EXTENSION).testDir.set("")
 
+        project.extensions.create<SnapFlavour>(DEBUG_FLAVOUR).flavour.set("")
+
         project.snapItDependencies()
 
         project.snapItPlugins()

@@ -5,16 +5,35 @@ package uk.adbsalam.snapit.plugin
  * This will direct user regarding error and how this can be fixed
  */
 val snapItExtentionException = Exception(
-    """property snapIt { <TEST SOURCESET LOCATION> } missing from module build.gradle
-    | Please add snapIt { <TEST SOURCESET LOCATION> } to your module build.gradle
-    | 
-    | Example: If test location needs to be in src/test/java/com/example/tests 
-    | In module build.gradle add following property
-    | 
-    | snapIt {
-    |   testDir("com/example/tests")
-    | }
-    | 
-    | Once property added please try a refresh and build
+    """
+        |Missing Properties
+        | 
+        |snapIt {
+        |   testDir = "<TEST_DIRECTORY_HERE>"
+        |   flavour = "<FLAVOUR_NAME_HERE>"
+        |} 
+        |
+        |missing from module build.gradle
+        | 
+        |Example: 
+        |-If test location needs to be in src/test/java/com/example/tests 
+        |-If flavour name is exampleFlav
+        |
+        |snapIt {
+        |   testDir = "src/test/java/com/example/tests"
+        |   flavour = "exampleFlav"
+        |}
+        | 
+        |-If no multi flavours exist then simply set flavour = "debug"
+        |
+        | In module build.gradle add following property
+        | 
+        | snapIt {
+        |   testDir = "src/test/java/com/example/tests"
+        |   flavour = "debug"
+        | }
+        | NOTE: Release flavours are not allowed, thus no tests will be generated for release flavours
+        | 
+        | Once property added please try a refresh and build
     """.trimMargin()
 )
