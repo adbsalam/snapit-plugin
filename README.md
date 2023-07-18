@@ -13,7 +13,7 @@ Apply plugin to your module
 
 In your ```build.gradle.kts``` apply plugin
 
-UseLegasy
+Use Legacy
 
 ```
 buildscript {
