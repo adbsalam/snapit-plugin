@@ -64,6 +64,6 @@ fun getFlavour(flavour: String): String {
     else "${flavour}Debug"
 }
 
-fun Project.getAssembleTask(flavour: String): String {
-    return ":${project.name}:assemble${flavour.capitalized()}"
+fun getAssembleTask(flavour: String): String {
+    return "assemble${flavour.capitalized()}"
 }
