@@ -2,7 +2,6 @@ package uk.adbsalam.snapit.plugin
 
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
-import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.the
 
 /**
@@ -16,6 +15,11 @@ const val srcTestPath = "src/test/java/"
 const val PATH_EXTENSION = "testDirPath"
 
 /**
+ * flavour name of current project
+ */
+const val DEBUG_FLAVOR = "debugFlavor"
+
+/**
  * interface for SnapPath extension
  */
 interface SnapPath {
@@ -23,18 +27,30 @@ interface SnapPath {
 }
 
 /**
+ * interface for SnapPath extension
+ */
+interface SnapFlavour {
+    val flavor: Property<String>
+}
+
+/**
  * function to allow apply property value
  */
-fun snapIt(func: SnapPathTask.() -> Unit) = SnapPathTask().apply { func() }
+fun Project.snapIt(func: SnapPathTask.() -> Unit) = SnapPathTask().apply {
+    func()
+    onInit()
+}
+
 
 /**
  * SnapPathTask to generate and execute gradle extension value
  */
 class SnapPathTask {
-    fun Project.testDir(string: String) {
-        val ext = this.extensions.get(PATH_EXTENSION) as SnapPath?
-        if (ext != null) {
-            the<SnapPath>().testDir.set(string.replace(srcTestPath, ""))
-        }
+    var testDir = ""
+    var flavor = ""
+
+    fun Project.onInit() {
+        the<SnapPath>().testDir.set(testDir)
+        the<SnapFlavour>().flavor.set(flavor)
     }
 }

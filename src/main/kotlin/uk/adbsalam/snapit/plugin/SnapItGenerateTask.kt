@@ -2,18 +2,10 @@ package uk.adbsalam.snapit.plugin
 
 import org.gradle.api.Project
 import org.gradle.api.tasks.Copy
+import org.gradle.configurationcache.extensions.capitalized
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.register
-
-/**
- * build directory for generated snapit code
- */
-const val SNAP_IT_BUILD_DIR = "build/generated/ksp/debug/kotlin/uk/adbsalam/snapit/"
-
-/**
- * Test folder directory to paste tests into
- */
-private fun String.asDir() = "src/test/java/$this"
+import java.lang.Exception
 
 /**
  * Generate Gradle tasks needed for Code generation and running paparazzi tests
@@ -27,19 +19,26 @@ internal fun Project.snapItGenerateTask() {
      * - Once done this task will then replace comment regex and make test executable
      */
     this.tasks.register<Copy>("snapItGenerate") {
-        try {
 
-            val extension = this.project.extensions[PATH_EXTENSION] as SnapPath
-            if (extension.testDir.get().isEmpty()) {
+        try {
+            val testDirExt = this.project.extensions[PATH_EXTENSION] as SnapPath
+            val flavourExt = this.project.extensions[DEBUG_FLAVOR] as SnapFlavour
+
+            if (testDirExt.testDir.get().isEmpty()) {
                 throw snapItExtentionException
             }
 
-            dependsOn("assemble")
+            if (flavourExt.flavor.get().isEmpty()) {
+                throw snapItExtentionException
+            }
 
-            from(SNAP_IT_BUILD_DIR)
-            into(extension.testDir.get().asDir())
+            val flavour = getFlavour(flavourExt.flavor.get())
+
+            dependsOn(getAssembleTask(flavour))
+
+            from("build/generated/ksp/${flavour}/kotlin/uk/adbsalam/snapit/")
+            into(testDirExt.testDir.get())
             filter { line -> line.replace("//", "") }
-
         } catch (e: Exception) {
             snapItExtentionException.printStackTrace()
         }
@@ -58,4 +57,13 @@ internal fun Project.snapItGenerateTask() {
     this.tasks.register("snapItVerify") {
         dependsOn("verifyPaparazzi")
     }
+}
+
+fun getFlavour(flavour: String): String {
+    return if (flavour == "debug" || flavour == "Debug") "debug"
+    else "${flavour}Debug"
+}
+
+fun getAssembleTask(flavour: String): String {
+    return "assemble${flavour.capitalized()}"
 }

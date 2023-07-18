@@ -1,5 +1,5 @@
 # SnapIt Gradle Plugin
-![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.2-blue)
+![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.4-blue)
 
 [SnapIt Gradle Portal Link](https://plugins.gradle.org/plugin/uk.adbsalam.snapit)
 
@@ -19,11 +19,12 @@ In your ```build.gradle.kts``` apply plugin
 
 ```kotlin
 plugins {
-   id("uk.adbsalam.snapit") version "<LATEST-VERSION>"
+  id("com.google.devtools.ksp") version "1.9.0-1.0.11" // required to run KSP
+  id("uk.adbsalam.snapit") version "<LATEST-VERSION>"
 }
 ```
 
-OR Use Legacy 
+OR Use Legacy
 ```
 buildscript {
   repositories {
@@ -44,9 +45,14 @@ apply(plugin = "uk.adbsalam.snapit")
 In your ```build.gradle.kts``` set snap test package location to generate tests at.
 ```kotlin
 snapIt {
-   testDir("uk/adbsalam/snapit")
+  testDir = "src/kotlin/testuk/adbsalam/snapit"
+  flavor = "testFlavour" 
 }
 ```
+
+``testDir`` Full directory of current unit test location
+```flavor``` Name of current flavour, if your app do not have multiple flavours then set value to "debug". Release flavours are not allowed in SnapIt
+
 
 This will allow usage of ```@SnapIt``` in code and create following gradle tasks
 
@@ -145,7 +151,7 @@ This will generate 2 Files.
  }
 ```
 
-## Record Tests 
+## Record Tests
 
 Run task to generate snapshots
 ```
