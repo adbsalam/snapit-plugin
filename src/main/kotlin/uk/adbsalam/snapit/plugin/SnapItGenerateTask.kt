@@ -22,17 +22,17 @@ internal fun Project.snapItGenerateTask() {
 
         try {
             val testDirExt = this.project.extensions[PATH_EXTENSION] as SnapPath
-            val flavourExt = this.project.extensions[DEBUG_FLAVOUR] as SnapFlavour
+            val flavourExt = this.project.extensions[DEBUG_FLAVOR] as SnapFlavour
 
             if (testDirExt.testDir.get().isEmpty()) {
                 throw snapItExtentionException
             }
 
-            if (flavourExt.flavour.get().isEmpty()) {
+            if (flavourExt.flavor.get().isEmpty()) {
                 throw snapItExtentionException
             }
 
-            val flavour = getFlavour(flavourExt.flavour.get())
+            val flavour = getFlavour(flavourExt.flavor.get())
 
             dependsOn(getAssembleTask(flavour))
 

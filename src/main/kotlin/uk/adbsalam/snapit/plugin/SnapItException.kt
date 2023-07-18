@@ -10,29 +10,29 @@ val snapItExtentionException = Exception(
         | 
         |snapIt {
         |   testDir = "<TEST_DIRECTORY_HERE>"
-        |   flavour = "<FLAVOUR_NAME_HERE>"
+        |   flavor = "<FLAVOR_NAME_HERE>"
         |} 
         |
         |missing from module build.gradle
         | 
         |Example: 
         |-If test location needs to be in src/test/java/com/example/tests 
-        |-If flavour name is exampleFlav
+        |-If flavor name is exampleFlav
         |
         |snapIt {
         |   testDir = "src/test/java/com/example/tests"
-        |   flavour = "exampleFlav"
+        |   flavor = "exampleFlav"
         |}
         | 
-        |-If no multi flavours exist then simply set flavour = "debug"
+        |-If no multi flavors exist then simply set flavor = "debug"
         |
         | In module build.gradle add following property
         | 
         | snapIt {
         |   testDir = "src/test/java/com/example/tests"
-        |   flavour = "debug"
+        |   flavor = "debug"
         | }
-        | NOTE: Release flavours are not allowed, thus no tests will be generated for release flavours
+        | NOTE: Release flavors are not allowed, thus no tests will be generated for release flavors
         | 
         | Once property added please try a refresh and build
     """.trimMargin()

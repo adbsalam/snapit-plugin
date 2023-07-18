@@ -2,7 +2,6 @@ package uk.adbsalam.snapit.plugin
 
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
-import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.the
 
 /**
@@ -18,7 +17,7 @@ const val PATH_EXTENSION = "testDirPath"
 /**
  * flavour name of current project
  */
-const val DEBUG_FLAVOUR = "debugFlavour"
+const val DEBUG_FLAVOR = "debugFlavor"
 
 /**
  * interface for SnapPath extension
@@ -31,7 +30,7 @@ interface SnapPath {
  * interface for SnapPath extension
  */
 interface SnapFlavour {
-    val flavour: Property<String>
+    val flavor: Property<String>
 }
 
 /**
@@ -48,10 +47,10 @@ fun Project.snapIt(func: SnapPathTask.() -> Unit) = SnapPathTask().apply {
  */
 class SnapPathTask {
     var testDir = ""
-    var flavour = ""
+    var flavor = ""
 
     fun Project.onInit() {
         the<SnapPath>().testDir.set(testDir)
-        the<SnapFlavour>().flavour.set(flavour)
+        the<SnapFlavour>().flavor.set(flavor)
     }
 }
