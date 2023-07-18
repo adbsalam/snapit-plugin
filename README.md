@@ -1,5 +1,5 @@
 # SnapIt Gradle Plugin
-![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.2-blue)
+![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.4-blue)
 
 [SnapIt Gradle Portal Link](https://plugins.gradle.org/plugin/uk.adbsalam.snapit)
 
@@ -45,7 +45,7 @@ apply(plugin = "uk.adbsalam.snapit")
 In your ```build.gradle.kts``` set snap test package location to generate tests at.
 ```kotlin
 snapIt {
-   testDir = "src/kotlin/testuk/adbsalam/snapit"
+  testDir = "src/kotlin/testuk/adbsalam/snapit"
   flavor = "testFlavour" 
 }
 ```
