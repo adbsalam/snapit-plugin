@@ -13,6 +13,23 @@ Apply plugin to your module
 
 In your ```build.gradle.kts``` apply plugin
 
+UseLegasy
+
+```
+buildscript {
+  repositories {
+    maven {
+      url = uri("https://plugins.gradle.org/m2/")
+    }
+  }
+  dependencies {
+    classpath("uk.adbsalam.snapit:snapit-plugin:1.0.2")
+  }
+}
+
+apply(plugin = "uk.adbsalam.snapit")
+```
+
 ```kotlin
 plugins {
    id("uk.adbsalam.snapit") version "<LATEST-VERSION>"
