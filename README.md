@@ -1,4 +1,7 @@
 # SnapIt Gradle Plugin
+![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.2-blue)
+
+[SnapIt Gradle Portal Link](https://plugins.gradle.org/plugin/uk.adbsalam.snapit)
 
 The Snapit Grade plugin enables the seamless integration of the Snapit library (available at [SnapIt Maven Sonatype]( https://central.sonatype.com/namespace/uk.adbsalam.snapit)). You can find the Snapit repository on GitHub at [SnapIt Github Repo]( https://github.com/MuhammadAbdulSalam/snapit ).
 
@@ -7,9 +10,10 @@ The Snapit Grade plugin enables the seamless integration of the Snapit library (
 ## Features
 
 Snapit is a powerful tool designed to automate the generation of Paparazzi tests by simple adding ```@Snapit``` Annotation on ```@Preview``` Functions, significantly reducing the time and resources required for creating snapshot tests. It leverages the ```@Preview``` Composables feature from the codebase, making it easy to implement and utilize. With Snapit, you can streamline your testing process and ensure the quality and reliability of your code.
+
 ## Implementation
 
-Apply plugin to your module
+Apply [Snapit-Gradle Plugin](https://plugins.gradle.org/plugin/uk.adbsalam.snapit) plugin to your module. [GithubRepo](https://github.com/MuhammadAbdulSalam/snapit-plugin)
 
 In your ```build.gradle.kts``` apply plugin
 
@@ -19,8 +23,7 @@ plugins {
 }
 ```
 
-OR Use Legacy
-
+OR Use Legacy 
 ```
 buildscript {
   repositories {
@@ -34,6 +37,7 @@ buildscript {
 }
 
 apply(plugin = "uk.adbsalam.snapit")
+
 ```
 
 
@@ -51,6 +55,8 @@ Now In Compose files you can make use of annotation ```@SnapIt``` as following
 - ```./gradlew :module:SnapItGenerate``` to generate test files
 - ```./gradlew :module:SnapItRecord``` to record Paparazzi Snapshot tests
 - ```./gradlew :module:SnapItVerify``` to run/verify generated tests
+
+
 
 
 ## Usage/Examples
@@ -83,7 +89,7 @@ fun ExamplePreview2() {
 ```
 Run Task to genenrate test file
 
-```./gradlew :module:SnapItGenerate```
+```./gradlew :module:snapitgenerate```
 
 This will generate 2 Files.
 - ```ExampleScreenComponentTest.kt``` to generate test for a component with no
@@ -139,9 +145,28 @@ This will generate 2 Files.
  }
 ```
 
+## Record Tests 
+
+Run task to generate snapshots
+```
+./gradlew :module:snapitrecord
+```
+
+This will generate following SnapShots for this example code
+
+### Component
+![Component](https://github.com/MuhammadAbdulSalam/snapit/blob/develop/sample/src/test/snapshots/images/uk.adbsalam.snapit.sample_ExampleScreenComponentTest_examplePreviewSnapTest.png)
 
 
+### Screen
+![Screen](https://github.com/MuhammadAbdulSalam/snapit/blob/develop/sample/src/test/snapshots/images/uk.adbsalam.snapit.sample_ExampleScreenScreenTest_when%20in%20preview%2C%20should%20render%20correctly.png)
 
+
+## Verification
+Run task to verify snapshot tests
+```
+./gradlew :module:snapitverify
+```
 
 
 ## Acknowledgements
