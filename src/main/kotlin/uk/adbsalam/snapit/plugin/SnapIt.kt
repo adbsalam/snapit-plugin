@@ -20,8 +20,6 @@ class SnapIt : Plugin<Project> {
 
         project.snapItDependencies()
 
-        project.snapItPlugins()
-
         project.snapItGenerateTask()
     }
 }
