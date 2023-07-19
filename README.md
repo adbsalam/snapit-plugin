@@ -1,10 +1,9 @@
 # SnapIt Gradle Plugin
-![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.4-blue)
+![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.5-blue)
 
 [SnapIt Gradle Portal Link](https://plugins.gradle.org/plugin/uk.adbsalam.snapit)
 
 The Snapit Grade plugin enables the seamless integration of the Snapit library (available at [SnapIt Maven Sonatype]( https://central.sonatype.com/namespace/uk.adbsalam.snapit)). You can find the Snapit repository on GitHub at [SnapIt Github Repo]( https://github.com/MuhammadAbdulSalam/snapit ).
-
 
 
 ## Features
@@ -13,18 +12,21 @@ Snapit is a powerful tool designed to automate the generation of Paparazzi tests
 
 ## Implementation
 
-Apply [Snapit-Gradle Plugin](https://plugins.gradle.org/plugin/uk.adbsalam.snapit) plugin to your module. [GithubRepo](https://github.com/MuhammadAbdulSalam/snapit-plugin)
+Apply [Snapit-Gradle Plugin](https://plugins.gradle.org/plugin/uk.adbsalam.snapit) plugin to your module. [GithubRepo](https://github.com/MuhammadAbdulSalam/snapit-plugin).
 
 In your ```build.gradle.kts``` apply plugin
 
+Kotlin DSL
+
 ```kotlin
 plugins {
-  id("com.google.devtools.ksp") version "<LATEST-VERSION>" // required to run KSP
-  id("uk.adbsalam.snapit") version "<LATEST-VERSION>"
+  id ("app.cash.paparazzi") version "<LATEST-VERSION>"
+  id ("uk.adbsalam.snapit") version "<LATEST-VERSION>"
 }
 ```
 
-OR Use Legacy
+OR Using plugin application:
+
 ```
 buildscript {
   repositories {
@@ -33,11 +35,13 @@ buildscript {
     }
   }
   dependencies {
-    classpath("uk.adbsalam.snapit:snapit-plugin:1.0.2")
+    classpath("uk.adbsalam.snapit:snapit-plugin:<LATEST_VERSION>")
+    classpath ("app.cash.paparazzi:paparazzi-gradle-plugin:<LATEST_VERSION>")
   }
 }
 
 apply(plugin = "uk.adbsalam.snapit")
+apply(plugin = "app.cash.paparazzi")
 
 ```
 
