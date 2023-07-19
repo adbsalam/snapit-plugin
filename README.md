@@ -3,7 +3,7 @@
 
 [SnapIt Gradle Portal Link](https://plugins.gradle.org/plugin/uk.adbsalam.snapit)
 
-The Snapit Grade plugin enables the seamless integration of the Snapit library (available at [SnapIt Maven Sonatype]( https://central.sonatype.com/namespace/uk.adbsalam.snapit)). You can find the Snapit repository on GitHub at [SnapIt Github Repo]( https://github.com/MuhammadAbdulSalam/snapit ).
+The Snapit Grade plugin enables the seamless integration of the Snapit library (available at [SnapIt Maven Sonatype]( https://central.sonatype.com/namespace/uk.adbsalam.snapit)). For Snapit repository and snapit-plugin samples please visit our GitHub at [SnapIt Github Repo]( https://github.com/MuhammadAbdulSalam/snapit ).
 
 
 ## Features
