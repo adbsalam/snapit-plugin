@@ -1,6 +1,7 @@
 plugins {
     `kotlin-dsl`
     alias(libs.plugins.gradle.publish)
+    alias(libs.plugins.kover)
 }
 
 /**
@@ -14,6 +15,7 @@ version = "1.0.5"
  */
 dependencies {
     testImplementation(kotlin("test"))
+    testImplementation(libs.mockk)
 }
 
 /**
