@@ -24,18 +24,12 @@ internal fun Project.snapItGenerateTask() {
             val testDirExt = this.project.extensions[PATH_EXTENSION] as SnapPath
             val flavourExt = this.project.extensions[DEBUG_FLAVOR] as SnapFlavour
 
-            if (testDirExt.testDir.get().isEmpty()) {
-                throw snapItExtentionException
-            }
-
-            if (flavourExt.flavor.get().isEmpty()) {
-                throw snapItExtentionException
-            }
+            validateExtProperty(testDirExt.testDir.get())
+            validateExtProperty(flavourExt.flavor.get())
 
             val flavour = getFlavour(flavourExt.flavor.get())
 
             dependsOn(getAssembleTask(flavour))
-
             from("build/generated/ksp/${flavour}/kotlin/uk/adbsalam/snapit/")
             into(testDirExt.testDir.get())
             filter { line -> line.replace("//", "") }
@@ -66,4 +60,8 @@ fun getFlavour(flavour: String): String {
 
 fun getAssembleTask(flavour: String): String {
     return "assemble${flavour.capitalized()}"
+}
+
+fun validateExtProperty(value: String) {
+    if (value.isEmpty()) throw snapItExtentionException
 }

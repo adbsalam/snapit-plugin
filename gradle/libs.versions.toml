@@ -4,3 +4,7 @@ kotlin-jvm = "1.8.10"
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin-jvm" }
 gradle-publish = { id = "com.gradle.plugin-publish", version = "1.1.0" }
+kover = { id = "org.jetbrains.kotlinx.kover", version = "0.7.2" }
+
+[libraries]
+mockk = { group = "io.mockk", name = "mockk", version = "1.13.5" }
