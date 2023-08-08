@@ -1,5 +1,5 @@
 # SnapIt Gradle Plugin
-![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.5-blue)
+![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.6-blue)
 
 [SnapIt Gradle Portal Link](https://plugins.gradle.org/plugin/uk.adbsalam.snapit)
 
@@ -66,8 +66,16 @@ Now In Compose files you can make use of annotation ```@SnapIt``` as following
 - ```./gradlew :module:SnapItRecord``` to record Paparazzi Snapshot tests
 - ```./gradlew :module:SnapItVerify``` to run/verify generated tests
 
+## Dark Mode Testing Support
+Dark mode testing support is added simply set ```isDark = true``` to ```@SnapIt``` an example is following
 
-
+```kotlin
+@Composable
+@SnapIt(isDark = true)
+fun ExampleCompose() {
+    Text(text = "Hello World")
+}
+```
 
 ## Usage/Examples
 
