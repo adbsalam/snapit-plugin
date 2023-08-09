@@ -8,7 +8,7 @@ import org.gradle.kotlin.dsl.project
 /**
  * current version of snapIt dependency
  */
-const val VERSION = "1.0.4"
+const val VERSION = "1.0.5"
 
 /**
  * annotation module for dependency
