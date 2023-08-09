@@ -1,5 +1,5 @@
 # SnapIt Gradle Plugin
-![Maven Central](https://img.shields.io/badge/Gradle_Plugin-1.0.6-blue)
+![Maven Central](https://img.shields.io/badge/Gradle_Plugin-2.0.0-blue)
 
 [SnapIt Gradle Portal Link](https://plugins.gradle.org/plugin/uk.adbsalam.snapit)
 
@@ -66,12 +66,38 @@ Now In Compose files you can make use of annotation ```@SnapIt``` as following
 - ```./gradlew :module:SnapItRecord``` to record Paparazzi Snapshot tests
 - ```./gradlew :module:SnapItVerify``` to run/verify generated tests
 
-## Dark Mode Testing Support
+
+## Features and Defualts
+```kotlin
+annotation class SnapIt(
+    val name: String = "", // custom test name to use 
+    val isScreen: Boolean = false, // is screen component - will provide system UI
+    val preview: Boolean = false, // require preview context
+    val isDark: Boolean = false, // is Dark Mode
+    val gif: Boolean = false, // capture a gif
+    val start: Long = 0L, // start duration in Long
+    val end: Long = 500L, // end duration in Long
+    val fps: Int = 30 // fps to use as Int
+)
+```
+
+## Dark Mode Example
 Dark mode testing support is added simply set ```isDark = true``` to ```@SnapIt``` an example is following
 
 ```kotlin
 @Composable
 @SnapIt(isDark = true)
+fun ExampleCompose() {
+    Text(text = "Hello World")
+}
+```
+
+## Gifs Example
+Dark mode testing support is added simply set ```isDark = true``` to ```@SnapIt``` an example is following
+
+```kotlin
+@Composable
+@SnapIt(gif = true, end = 1000L, start = 0L, fps = 60)
 fun ExampleCompose() {
     Text(text = "Hello World")
 }
