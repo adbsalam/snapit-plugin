@@ -8,7 +8,7 @@ plugins {
  * Project info
  */
 group = "uk.adbsalam.snapit"
-version = "1.0.8"
+version = "2.0.0"
 
 /**
  * Dependencies for project
